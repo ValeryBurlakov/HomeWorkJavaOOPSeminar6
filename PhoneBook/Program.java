@@ -12,8 +12,8 @@ public class Program {
         // телефонные книги
         PhoneBook firstBook = new PhoneBook();
         PhoneBook twoBook = new PhoneBook();
-        PhoneBook threeBook = new PhoneBook();
-        PhoneBook fourBook = new PhoneBook();
+        // PhoneBook threeBook = new PhoneBook();
+        // PhoneBook fourBook = new PhoneBook();
 
         // добавление контактов в книгу
         firstBook.addContact(oleg);
@@ -22,37 +22,27 @@ public class Program {
         
         // экспорт
         Exporter firstExporterExport = new Exporter(); // родительский
-        ExporterNew firstExporterExportNew = new ExporterNew(); // дочерний
+        PhoneBookCsvExport firstCSVExport = new PhoneBookCsvExport(); // дочерний
+        PhoneBookTXTExport firstTXTExport = new PhoneBookTXTExport(); // дочерний
        
         // импорт
         Importer Imp = new Importer(); // родительский
-        PhoneBookCsvImport firstImport = new PhoneBookCsvImport(); // дочерний
+        PhoneBookCsvImport firstCSVImport = new PhoneBookCsvImport(); // дочерний
         PhoneBookTXTImport firstTXTImport = new PhoneBookTXTImport(); // дочерний
-
-        PhoneBookCsvExport firstCSVExport = new PhoneBookCsvExport();
-        PhoneBookTXTExport firstTXTExport = new PhoneBookTXTExport();
-        PhoneBookCsvExportNew firstCSVExportNew = new PhoneBookCsvExportNew();
-
-    
-        System.out.println("Контакты 1 книги" + firstBook.getContacts() + "\n");
 
         // LSP
         firstExporterExport.exportContacts(firstBook.getContacts(), "PhoneBook1.csv");
         firstCSVExport.exportContacts(firstBook.getContacts(), "PhoneBook");
         firstTXTExport.exportContacts(firstBook.getContacts(), "phonebook");
 
-        // LSP
-        firstExporterExportNew.exportContacts(firstBook.getContacts(), "PhoneBook22.csv"); 
-        firstCSVExportNew.exportContacts(firstBook.getContacts(), "PhoneBook2");
-
         twoBook.importContacts("PhoneBook.csv");
 
+        System.out.println("Контакты 1 книги" + firstBook.getContacts() + "\n");
         // родительский и дочерний класс взаимозаменяемы
         System.out.println("Родительский Импортирующий класс csv" + Imp.importContacts("PhoneBook.csv") + "\n");
         System.out.println("Родительский Импортирующий класс txt" + Imp.importContacts("phonebook.txt") + "\n");
-        System.out.println("дочерний CSV класс" + firstImport.importContacts("PhoneBook") + "\n");
+        System.out.println("дочерний CSV класс" + firstCSVImport.importContacts("PhoneBook") + "\n");
         System.out.println("дочерний TXT класс" + firstTXTImport.importContacts("phonebook") + "\n");
-
         System.out.println("Импортированные контакты  2 книги" + twoBook.getContacts());
     }
 
