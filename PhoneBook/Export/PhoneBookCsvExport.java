@@ -1,5 +1,7 @@
-package PhoneBook;
+package PhoneBook.Export;
 import java.util.List;
+
+import PhoneBook.ContactTypes.Contact;
 
 public class PhoneBookCsvExport extends Exporter{
     @Override

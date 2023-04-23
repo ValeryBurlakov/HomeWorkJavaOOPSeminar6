@@ -1,4 +1,4 @@
-package PhoneBook;
+package PhoneBook.ContactTypes;
 
 public class Contact {
     private String firstName;
@@ -45,6 +45,10 @@ public class Contact {
         this.email = email;
     }
 
+    public int compareTo(Contact other) {
+        return firstName.compareTo(other.getFirstName());
+    }
+    
     @Override
     public String toString() {
         return "Contact{" +

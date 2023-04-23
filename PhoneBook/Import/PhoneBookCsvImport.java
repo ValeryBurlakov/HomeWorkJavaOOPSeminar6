@@ -1,5 +1,6 @@
-package PhoneBook;
+package PhoneBook.Import;
 
+import java.io.IOException;
 // import java.util.ArrayList;
 import java.util.List;
 // public class PhoneBookCsvImport extends Importer{
@@ -10,9 +11,11 @@ import java.util.List;
 // }
 // }
 
+import PhoneBook.ContactTypes.Contact;
+
 public class PhoneBookCsvImport extends Importer{
     @Override
-    public List<Contact> importContacts(String filePath) {
+    public List<Contact> importContacts(String filePath) throws IOException {
         // импорт контактов из CSV файла
         Importer importer = new Importer();
         List<Contact> importedContacts = importer.importContacts(filePath + ".csv");
